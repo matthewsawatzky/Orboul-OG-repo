@@ -1,0 +1,196 @@
+:root {
+  --bg-base: #050406;
+  --bg-glow: #11131b;
+  --bg-accent: #17203a;
+  --text-primary: #f3f4f6;
+  --text-muted: #a6a9b4;
+  --accent: #3d7bff;
+  --accent-soft: rgba(61, 123, 255, 0.35);
+  color-scheme: dark;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  background: radial-gradient(circle at top, var(--bg-accent), transparent 55%),
+    radial-gradient(circle at 20% 80%, rgba(78, 31, 231, 0.15), transparent 60%),
+    radial-gradient(circle at 80% 30%, rgba(10, 148, 255, 0.18), transparent 55%),
+    var(--bg-base);
+  color: var(--text-primary);
+  font-family: "Space Grotesk", system-ui, -apple-system, BlinkMacSystemFont,
+    "Segoe UI", sans-serif;
+  letter-spacing: 0.01em;
+}
+
+::selection {
+  background: rgba(61, 123, 255, 0.3);
+  color: inherit;
+}
+
+.aurora {
+  position: fixed;
+  inset: 0;
+  overflow: hidden;
+  pointer-events: none;
+  z-index: -1;
+  filter: blur(120px);
+  opacity: 0.9;
+}
+
+.aurora span {
+  position: absolute;
+  width: 40vw;
+  height: 40vw;
+  min-width: 320px;
+  min-height: 320px;
+  background: radial-gradient(
+    circle,
+    rgba(61, 123, 255, 0.5),
+    rgba(61, 123, 255, 0)
+  );
+  animation: drift 38s infinite linear;
+}
+
+.aurora span:nth-child(2) {
+  top: 55%;
+  left: -5%;
+  animation-duration: 44s;
+  background: radial-gradient(
+    circle,
+    rgba(255, 59, 166, 0.45),
+    rgba(255, 59, 166, 0)
+  );
+}
+
+.aurora span:nth-child(3) {
+  top: -15%;
+  right: -10%;
+  animation-duration: 52s;
+  background: radial-gradient(
+    circle,
+    rgba(29, 229, 146, 0.5),
+    rgba(29, 229, 146, 0)
+  );
+}
+
+@keyframes drift {
+  0% {
+    transform: translate3d(-10%, -10%, 0) scale(1);
+  }
+  33% {
+    transform: translate3d(8%, -4%, 0) scale(1.15);
+  }
+  66% {
+    transform: translate3d(-6%, 10%, 0) scale(0.95);
+  }
+  100% {
+    transform: translate3d(-10%, -10%, 0) scale(1);
+  }
+}
+
+.landing {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  padding: 4rem 1.5rem 3rem;
+  min-height: 100vh;
+  width: min(720px, 100%);
+  margin: 0 auto;
+  gap: 2.5rem;
+}
+
+.masthead {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.5rem;
+  width: 100%;
+}
+
+.logo-slot {
+  display: grid;
+  place-items: center;
+  width: min(360px, 70vw);
+  aspect-ratio: 1;
+  border-radius: 28px;
+  background: linear-gradient(145deg, rgba(255, 255, 255, 0.06), rgba(0, 0, 0, 0.4));
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  box-shadow: inset 0 -2px 20px rgba(0, 0, 0, 0.45),
+    0 18px 60px rgba(10, 17, 35, 0.6);
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
+  transition: transform 300ms ease, box-shadow 300ms ease;
+}
+
+.logo-slot:focus-within,
+.logo-slot:hover {
+  transform: translateY(-6px);
+  box-shadow: inset 0 -2px 20px rgba(0, 0, 0, 0.4),
+    0 30px 80px rgba(17, 25, 54, 0.7);
+}
+
+.logo-slot svg,
+.logo-slot img {
+  max-width: 70%;
+  max-height: 70%;
+}
+
+.logo-placeholder {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 140px;
+  height: 140px;
+  border-radius: 50%;
+  background: rgba(61, 123, 255, 0.18);
+  color: var(--accent);
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  font-size: clamp(1rem, 2vw, 1.25rem);
+}
+
+.message {
+  max-width: 600px;
+  font-size: clamp(1.05rem, 2.1vw, 1.35rem);
+  line-height: 1.6;
+  color: var(--text-muted);
+}
+
+.message a {
+  color: var(--text-primary);
+  text-decoration: none;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+  transition: color 200ms ease, border-color 200ms ease;
+}
+
+.message a:hover,
+.message a:focus-visible {
+  color: var(--accent);
+  border-color: var(--accent-soft);
+}
+
+@media (max-width: 600px) {
+  .logo-slot {
+    border-radius: 22px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
