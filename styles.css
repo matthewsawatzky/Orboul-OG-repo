@@ -51,7 +51,7 @@ body {
   min-height: 320px;
   background: radial-gradient(
     circle,
-    rgba(61, 123, 255, 0.5),
+    rgba(46, 57, 81, 0.5),
     rgba(61, 123, 255, 0)
   );
   animation: drift 38s infinite linear;
@@ -63,8 +63,8 @@ body {
   animation-duration: 44s;
   background: radial-gradient(
     circle,
-    rgba(255, 59, 166, 0.45),
-    rgba(255, 59, 166, 0)
+    rgba(48, 48, 48, 0.45),
+    rgba(120, 104, 113, 0)
   );
 }
 
@@ -74,7 +74,7 @@ body {
   animation-duration: 52s;
   background: radial-gradient(
     circle,
-    rgba(29, 229, 146, 0.5),
+    rgba(51, 77, 66, 0.5),
     rgba(29, 229, 146, 0)
   );
 }
